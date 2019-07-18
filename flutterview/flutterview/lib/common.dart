@@ -36,7 +36,7 @@ class CommonLessWidget extends StatelessWidget {
 
 abstract class CommonFulWidget extends StatefulWidget {}
 
-class CommonFulWidgetState<T extends StatefulWidget> extends State<T> {
+abstract class CommonFulWidgetState<T extends StatefulWidget> extends State<T> {
   @override
   void initState() {
     super.initState();
@@ -75,7 +75,7 @@ class CommonFulWidgetState<T extends StatefulWidget> extends State<T> {
 
   getAppbar() {
     return AppBar(
-      title: Text('控件的用法'),
+      title: Text(getTitle()),
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios),
         onPressed: () {
@@ -83,5 +83,9 @@ class CommonFulWidgetState<T extends StatefulWidget> extends State<T> {
         },
       ),
     );
+  }
+
+  String getTitle() {
+    return '';
   }
 }

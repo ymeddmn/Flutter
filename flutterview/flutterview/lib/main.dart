@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
-import 'Text.dart';
-import 'containerwidget.dart';
+import 'package:flutterview/widget/Text.dart';
+import 'package:flutterview/widget/containerwidget.dart';
+import 'package:flutterview/function/loadimage.dart';
+import 'package:flutterview/widget/listviewwidget.dart';
 
-void main() => runApp(Material(
+void main() =>
+    runApp(Material(
       child: MaterialApp(
         title: "列表",
         routes: <String, WidgetBuilder>{
-          'container': (_) => new ContainerWidget(),
-          'text': (BuildContext context) => new TextWidget()
-        },
+      //控件类
+      'container': (_) => new ContainerWidget(),
+      'text': (BuildContext context) => new TextWidget(),
+      "listview1":(_)=>new ListViewWidget1(),
+      //控件类
+
+
+      //功能类
+      'loadImage': (_) => LoadImageWidget(),
+      //功能类
+      },
         theme: new ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -27,6 +38,8 @@ class _MyAppState extends State<MyApp> {
   void _retrieveData() {
     datas.add(Page("container", "容器container的用法"));
     datas.add(Page("text", "text控件的用法"));
+    datas.add(Page("loadImage", "flutter加载网络图片的的方法"));
+    datas.add(Page("listview1", "listview通过children展示静态列表"));
     setState(() {});
   }
 
@@ -51,6 +64,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       body: ListView.separated(
+
         itemCount: datas.length,
         //列表项构造器
         itemBuilder: (BuildContext context, int index) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'common.dart';
+import '../common.dart';
 
 class TextWidget extends CommonFulWidget {
   @override
