@@ -12,7 +12,7 @@ class ListViewState extends CommonFulWidgetState<ListViewWidget1> {
   @override
   getBody() {
     return ListView(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       children: <Widget>[
         ListTile(
           title: Text("雪花"),
