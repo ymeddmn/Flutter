@@ -10,7 +10,7 @@ import 'package:flutterview/widget/expanded.dart';
 import 'package:flutterview/widget/padding.dart';
 import 'package:flutterview/widget/row.dart';
 import 'package:flutterview/function/fluttertoandroid.dart';
-
+import 'package:flutterview/function/androidtoflutter.dart';
 
 void main() => runApp(Material(
       child: MaterialApp(
@@ -21,10 +21,10 @@ void main() => runApp(Material(
           'text': (_) => new TextWidget(),
           "listview1": (_) => new ListViewWidget1(),
           'horizonalList': (_) => HorizonalListWidget(),
-          'expanded':(_)=>ExpandedFulWidget(),
-          'expandedflex':(_)=>ExpandedFlexFulWidget(),
-          'padding':(_)=>PaddingFulWidget(),
-          'row':(_)=>RowFulWidget(),
+          'expanded': (_) => ExpandedFulWidget(),
+          'expandedflex': (_) => ExpandedFlexFulWidget(),
+          'padding': (_) => PaddingFulWidget(),
+          'row': (_) => RowFulWidget(),
           //控件类
 
           //功能类
@@ -32,6 +32,7 @@ void main() => runApp(Material(
           'clickevent': (_) => ClickEventFulWidget(),
           'exitapp': (_) => ExitAppFulWidget(),
           'fluttertoandroid': (_) => FluttertoAndroidFulWidget(),
+          'androidtoflutter': (_) => AndroidToFlutterFulWidget(),
           //功能类
         },
         theme: new ThemeData(
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
     datas.add(Page("padding", "Padding控件，设置间距 f-10"));
     datas.add(Page("row", "row控件 f-11"));
     datas.add(Page("fluttertoandroid", "flutter调用安卓 f-12"));
+    datas.add(Page("androidtoflutter", "android调用flutter f-13"));
     setState(() {});
   }
 
@@ -100,7 +102,6 @@ class _MyAppState extends State<MyApp> {
 //              ));
           return ListTile(
             title: Text(datas[index].text),
-
             onTap: () {
               Navigator.of(context).pushNamed(datas[index].path);
             },

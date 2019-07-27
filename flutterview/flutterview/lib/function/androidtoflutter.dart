@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterview/common.dart';
+import 'package:flutter/services.dart';
 
 class AndroidToFlutterFulWidget extends CommonFulWidget {
   @override
@@ -10,7 +11,20 @@ class AndroidToFlutterFulWidget extends CommonFulWidget {
 
 class _AndroidToFlutterFulState
     extends CommonFulWidgetState<AndroidToFlutterFulWidget> {
-  String ztext = '点击操作会使得原生页面返回一个值给展示';
+  String ztext = '点击操作会使得原生页面返回一个值给flutter展示';
+  static const EventChannel eventChannel =
+      const EventChannel('androidtoflutter');
+
+  @override
+  void initState() {
+    super.initState();
+    eventChannel.receiveBroadcastStream().listen((data) {
+      print(data);
+      setState(() {
+        ztext = data;
+      });
+    });
+  }
 
   @override
   getBody() {
@@ -19,14 +33,23 @@ class _AndroidToFlutterFulState
         GestureDetector(
           onTap: () {},
           child: Container(
+            alignment: Alignment.center,
             color: Colors.yellow,
-            width: 100,
-            height: 100,
-            child: Text('点击会启动一个android的页面'),
+            width: 200,
+            height: 200,
+            child: Text('进入页面原生页面就会给flutter传值，展示在下面红色框中'),
           ),
         ),
-        Text(ztext)
+        Container(
+          child: Text(ztext),
+          width: 200,
+          height: 200,
+          color: Colors.red,
+          alignment: Alignment.center,
+        )
       ],
     );
   }
+
+  String _batteryLevel = 'Unknown battery level.';
 }

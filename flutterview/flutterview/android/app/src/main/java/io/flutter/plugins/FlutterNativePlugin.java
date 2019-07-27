@@ -2,6 +2,7 @@ package io.flutter.plugins;
 
 import android.app.Activity;
 
+import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
@@ -18,6 +19,9 @@ public class FlutterNativePlugin implements MethodChannel.MethodCallHandler {
     static MethodChannel channel;
 
     private Activity activity;
+
+    static {
+    }
 
     private FlutterNativePlugin(Activity activity) {
         this.activity = activity;
